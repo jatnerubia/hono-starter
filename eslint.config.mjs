@@ -1,5 +1,3 @@
-// @ts-check
-
 import eslint from "@eslint/js"
 import eslintConfigPrettier from "eslint-config-prettier"
 import n from "eslint-plugin-n"
