@@ -26,9 +26,12 @@ jobs:
   test:
     needs: lint
     runs-on: ubuntu-latest
+    environment: test
     strategy:
       matrix:
         node-version: [18.x]
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
