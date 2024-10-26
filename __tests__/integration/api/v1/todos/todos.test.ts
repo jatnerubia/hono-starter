@@ -1,15 +1,10 @@
 import { v1TodosRoute } from "@/api/v1/todos/todos.index"
 import { HttpStatusCodes } from "@/common/constants/http-status.constant"
 import { createApp } from "@/common/create-app"
-import { execSync } from "child_process"
 import { testClient } from "hono/testing"
-import { beforeAll, describe, expect, expectTypeOf, it } from "vitest"
+import { describe, expect, expectTypeOf, it } from "vitest"
 
 describe("todo list", () => {
-  beforeAll(async () => {
-    execSync("npm run db:push")
-  })
-
   it("responds with an array", async () => {
     const testApp = createApp()
     const testRouter = testApp.route("/", v1TodosRoute)

@@ -2,18 +2,13 @@ import { v2TodosRoute } from "@/api/v2/todos"
 import { HttpStatusCodes, HttpStatusPhrases } from "@/common/constants/http-status.constant"
 import { createApp } from "@/common/create-app"
 import { ZodErrorMessage } from "@/common/types/zod-error-message.type"
-import { execSync } from "child_process"
 import { testClient } from "hono/testing"
-import { beforeAll, describe, expect, it } from "vitest"
+import { describe, expect, it } from "vitest"
 
 const client = testClient(createApp().route("/", v2TodosRoute))
 
-describe("Get Todo API", () => {
-  beforeAll(async () => {
-    execSync("npm run db:push")
-  })
-
-  it("should return a todo successfully", async () => {
+describe("Delete Todo API", () => {
+  it("should delete a todo successfully", async () => {
     const name = "Sample"
     const done = false
 
@@ -28,22 +23,17 @@ describe("Get Todo API", () => {
 
     const createdTodo = await createResponse.json()
 
-    const response = await client.todos[":id"].$get({
+    const response = await client.todos[":id"].$delete({
       param: {
         id: createdTodo.id,
       },
     })
 
-    if (response.status !== HttpStatusCodes.OK) return
-
-    const result = await response.json()
-
-    expect(result.name).toBe(name)
-    expect(result.done).toBe(done)
+    expect(response.status).toBe(HttpStatusCodes.NO_CONTENT)
   })
 
   it("should return 404 for a non-existent todo ID", async () => {
-    const response = await client.todos[":id"].$get({
+    const response = await client.todos[":id"].$delete({
       param: {
         id: "00000000-0000-0000-0000-000000000000",
       },
@@ -57,7 +47,7 @@ describe("Get Todo API", () => {
   })
 
   it("should return 422 for an invalid todo ID", async () => {
-    const response = await client.todos[":id"].$get({
+    const response = await client.todos[":id"].$delete({
       param: {
         id: "1",
       },
