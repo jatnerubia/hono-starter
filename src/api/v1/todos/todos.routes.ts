@@ -1,9 +1,5 @@
 import * as HttpStatusCodes from "@/common/constants/http-status-codes.constant"
-import {
-  createJsonContent,
-  createJsonContentOneOf,
-  createJsonContentRequired,
-} from "@/common/helpers/json-content.helper"
+import { createJsonContent, createJsonContentRequired } from "@/common/helpers/json-content.helper"
 import { errorSchema } from "@/common/schemas/error.schema"
 import { notFoundSchema } from "@/common/schemas/not-found.schema"
 import uuidSchema from "@/common/schemas/uuid.schema"
@@ -64,10 +60,10 @@ export const patch = createRoute({
   responses: {
     [HttpStatusCodes.NOT_FOUND]: createJsonContent("Todo not found", notFoundSchema()),
     [HttpStatusCodes.OK]: createJsonContent("The updated todo", selectTodosSchema),
-    [HttpStatusCodes.UNPROCESSABLE_ENTITY]: createJsonContentOneOf("The validation error(s)", [
-      errorSchema(uuidSchema()),
-      errorSchema(patchTodosSchema),
-    ]),
+    [HttpStatusCodes.UNPROCESSABLE_ENTITY]: createJsonContent(
+      "The validation error(s)",
+      errorSchema(uuidSchema()).or(errorSchema(patchTodosSchema))
+    ),
   },
   tags,
 })
