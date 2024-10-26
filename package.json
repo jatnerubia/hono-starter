@@ -15,7 +15,7 @@
     "docker:dev:down": "docker-compose -f docker-compose.dev.yml down -v",
     "docker:prod:up": "docker-compose up --build -d",
     "docker:prod:down": "docker-compose down",
-    "test": "LOG_LEVEL=silent vitest",
+    "test": "vitest",
     "build": "rimraf ./dist && tsc --project tsconfig.build.json && tsc-alias",
     "start": "node dist/src/index.js"
   },
@@ -24,6 +24,7 @@
     "@hono/zod-openapi": "^0.16.4",
     "@scalar/hono-api-reference": "^0.5.153",
     "dotenv": "^16.4.5",
+    "dotenv-expand": "^11.0.6",
     "drizzle-orm": "^0.34.1",
     "drizzle-zod": "^0.5.1",
     "hono": "^4.6.7",

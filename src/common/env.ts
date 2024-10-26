@@ -1,9 +1,25 @@
+/* eslint-disable n/no-process-env */
+
 import { Environment } from "@/common/types/environment.type"
-import "dotenv/config"
+import { config } from "dotenv"
+import { expand } from "dotenv-expand"
+import path from "node:path"
 import { z, ZodError } from "zod"
 
+expand(
+  config({
+    path: path.resolve(
+      process.cwd(),
+      process.env.NODE_ENV === Environment.TEST ? ".env.test" : ".env"
+    ),
+  })
+)
+
 export const EnvSchema = z.object({
-  DATABASE_LOGGER: z.coerce.boolean().default(false),
+  DATABASE_LOGGER: z
+    .string()
+    .transform((value) => value === "true")
+    .default("false"),
   DATABASE_URL: z.string().url(),
   LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"]),
   NODE_ENV: z.string().default(Environment.DEVELOPMENT),
@@ -15,7 +31,6 @@ export type env = z.infer<typeof EnvSchema>
 let env: env
 
 try {
-  // eslint-disable-next-line n/no-process-env
   env = EnvSchema.parse(process.env)
 } catch (e) {
   const error = e as ZodError
