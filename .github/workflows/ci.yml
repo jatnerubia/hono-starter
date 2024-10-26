@@ -44,7 +44,7 @@ jobs:
           - 5432:5432
     env:
       LOG_LEVEL: silent
-      DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
