@@ -41,6 +41,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
+      LOG_LEVEL: silent
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
     steps:
       - uses: actions/checkout@v4
