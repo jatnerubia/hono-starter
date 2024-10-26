@@ -1,5 +1,5 @@
 import { v1TodosRoute } from "@/api/v1/todos/todos.index"
-import * as HttpStatusCodes from "@/common/constants/http-status-codes.constant"
+import { HttpStatusCodes } from "@/common/constants/http-status.constant"
 import { createApp } from "@/common/create-app"
 import { execSync } from "child_process"
 import { testClient } from "hono/testing"
