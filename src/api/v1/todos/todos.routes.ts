@@ -2,7 +2,7 @@ import * as HttpStatusCodes from "@/common/constants/http-status-codes.constant"
 import { createJsonContent, createJsonContentRequired } from "@/common/helpers/json-content.helper"
 import { errorSchema } from "@/common/schemas/error.schema"
 import { notFoundSchema } from "@/common/schemas/not-found.schema"
-import uuidSchema from "@/common/schemas/uuid.schema"
+import { uuidSchema } from "@/common/schemas/uuid.schema"
 import { insertTodosSchema, patchTodosSchema, selectTodosSchema } from "@/db/schemas"
 import { createRoute, z } from "@hono/zod-openapi"
 

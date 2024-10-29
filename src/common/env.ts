@@ -26,7 +26,7 @@ export const EnvSchema = z.object({
   PORT: z.coerce.number().default(5000),
 })
 
-export type env = z.infer<typeof EnvSchema>
+type env = z.infer<typeof EnvSchema>
 
 let env: env
 

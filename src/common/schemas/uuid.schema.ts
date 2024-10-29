@@ -1,7 +1,7 @@
 import { z } from "@hono/zod-openapi"
 import { randomUUID } from "crypto"
 
-export default function uuidSchema() {
+export function uuidSchema() {
   return z.object({
     id: z
       .string()
