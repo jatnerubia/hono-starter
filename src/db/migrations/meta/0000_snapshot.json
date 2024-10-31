@@ -1,5 +1,5 @@
 {
-  "id": "b40b7b44-8e1b-4b17-95d5-0becb8c44c6c",
+  "id": "9284bb66-b7a0-498c-aea8-aba4e1682c3b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -39,18 +39,21 @@
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "checkConstraints": {}
     }
   },
   "enums": {},
   "schemas": {},
   "sequences": {},
+  "views": {},
   "_meta": {
     "columns": {},
     "schemas": {},

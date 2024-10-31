@@ -1,12 +1,12 @@
 import env from "@/common/env"
 import { Environment } from "@/common/types/environment.type"
 import { randomUUID } from "crypto"
-import { logger } from "hono-pino"
+import { pinoLogger } from "hono-pino"
 import pino from "pino"
 import pretty from "pino-pretty"
 
-export const pinoLogger = () => {
-  return logger({
+export const pinoLoggerMiddleware = () => {
+  return pinoLogger({
     http: {
       reqId: () => randomUUID(),
     },

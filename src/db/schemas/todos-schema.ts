@@ -4,11 +4,11 @@ import { boolean, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 
 export const todos = pgTable("todos", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  name: text("name").notNull(),
+  id: uuid().primaryKey().defaultRandom(),
+  name: text().notNull(),
   done: boolean().notNull().default(false),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at")
+  createdAt: timestamp().defaultNow(),
+  updatedAt: timestamp()
     .defaultNow()
     .$onUpdate(() => new Date()),
 })

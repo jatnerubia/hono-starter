@@ -1,5 +1,5 @@
 import { defaultHook } from "@/common/hooks/default.hook"
-import { notFound, onError, pinoLogger } from "@/common/middlewares"
+import { notFound, onError, pinoLoggerMiddleware } from "@/common/middlewares"
 import { AppBindings, AppOpenAPI } from "@/common/types/app.type"
 import { OpenAPIHono } from "@hono/zod-openapi"
 
@@ -13,7 +13,7 @@ export function createRouter() {
 export function createApp() {
   const app = createRouter()
 
-  app.use(pinoLogger())
+  app.use(pinoLoggerMiddleware())
   app.notFound(notFound)
   app.onError(onError)
 
