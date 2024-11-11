@@ -1,6 +1,6 @@
 import { defaultHook } from "@/common/hooks/default.hook"
-import { notFound, onError, pinoLoggerMiddleware } from "@/common/middlewares"
-import { AppBindings, AppOpenAPI } from "@/common/types/app.type"
+import { notFoundMiddleware, onErrorMiddleware, pinoLoggerMiddleware } from "@/common/middlewares"
+import { AppBindings } from "@/common/types/app.type"
 import { OpenAPIHono } from "@hono/zod-openapi"
 import { secureHeaders } from "hono/secure-headers"
 
@@ -16,14 +16,8 @@ export function createApp() {
 
   app.use(secureHeaders())
   app.use(pinoLoggerMiddleware())
-  app.notFound(notFound)
-  app.onError(onError)
+  app.notFound(notFoundMiddleware)
+  app.onError(onErrorMiddleware)
 
   return app
-}
-
-export function createTestApp(router: AppOpenAPI) {
-  const testApp = createApp()
-  testApp.route("/", router)
-  return testApp
 }

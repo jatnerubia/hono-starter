@@ -3,7 +3,7 @@ import env from "@/common/env"
 import { Environment } from "@/common/types/environment.type"
 import { ErrorHandler } from "hono"
 
-export const onError: ErrorHandler = (err, c) => {
+export const onErrorMiddleware: ErrorHandler = (err, c) => {
   return c.json(
     {
       message: err.message,
