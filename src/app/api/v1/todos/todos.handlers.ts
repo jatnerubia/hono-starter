@@ -4,7 +4,7 @@ import {
   GetOneRoute,
   ListRoute,
   PatchRoute,
-} from "@/api/v1/todos/todos.routes"
+} from "@/app/api/v1/todos/todos.routes"
 import * as HttpStatusCodes from "@/common/constants/http-status-codes.constant"
 import * as HttpStatusPhrases from "@/common/constants/http-status-phrases.constant"
 import { AppRouteHandler } from "@/common/types/app.type"

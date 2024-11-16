@@ -1,4 +1,4 @@
-import { v2HealthRoute } from "@/api/v2/health"
+import { v2HealthRoute } from "@/app/api/v2/health"
 import { HttpStatusCodes } from "@/common/constants/http-status.constant"
 import { createApp } from "@/common/create-app"
 import { testClient } from "hono/testing"

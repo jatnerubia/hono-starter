@@ -1,4 +1,4 @@
-import { v2TodosRoute } from "@/api/v2/todos"
+import { v2TodosRoute } from "@/app/api/v2/todos"
 import { HttpStatusCodes, HttpStatusPhrases } from "@/common/constants/http-status.constant"
 import { createApp } from "@/common/create-app"
 import { ZodErrorMessage } from "@/common/types/zod-error-message.type"

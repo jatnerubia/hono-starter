@@ -1,4 +1,4 @@
-import { v2TodosRoute } from "@/api/v2/todos"
+import { v2TodosRoute } from "@/app/api/v2/todos"
 import { HttpStatusCodes } from "@/common/constants/http-status.constant"
 import { createApp } from "@/common/create-app"
 import { testClient } from "hono/testing"

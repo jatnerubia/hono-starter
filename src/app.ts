@@ -1,7 +1,7 @@
-import { v1IndexRoute } from "@/api/v1/index.route"
-import { v1TodosRoute } from "@/api/v1/todos/todos.index"
-import { v2HealthRoute } from "@/api/v2/health"
-import { v2TodosRoute } from "@/api/v2/todos"
+import { v1IndexRoute } from "@/app/api/v1/index.route"
+import { v1TodosRoute } from "@/app/api/v1/todos/todos.index"
+import { v2HealthRoute } from "@/app/api/v2/health"
+import { v2TodosRoute } from "@/app/api/v2/todos"
 import { createApp } from "@/common/create-app"
 import { setupOpenAPI } from "@/common/setup-open-api"
 
