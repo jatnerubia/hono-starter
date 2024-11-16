@@ -14,15 +14,15 @@ const route = createRoute({
       "Health check",
       z
         .object({
+          uptime: z.number(),
           status: z.string(),
           timestamp: z.string(),
-          uptime: z.number(),
         })
         .openapi({
           example: {
+            uptime: 0,
             status: "healthy",
             timestamp: "…",
-            uptime: 0,
           },
         })
     ),
@@ -33,9 +33,9 @@ const route = createRoute({
 const handler: AppRouteHandler<typeof route> = async (c) => {
   return c.json(
     {
+      uptime: process.uptime(),
       status: "healthy",
       timestamp: new Date().toISOString(),
-      uptime: process.uptime(),
     },
     HttpStatusCodes.OK
   )

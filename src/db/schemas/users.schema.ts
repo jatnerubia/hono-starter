@@ -1,5 +1,3 @@
-/* eslint-disable perfectionist/sort-objects */
-
 import { bigserial, pgTable, timestamp, varchar } from "drizzle-orm/pg-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 

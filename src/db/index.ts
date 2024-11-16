@@ -9,8 +9,8 @@ const pool = new pg.Pool({
 })
 
 const db = drizzle({
-  casing: "snake_case",
   client: pool,
+  casing: "snake_case",
   logger: env.DATABASE_LOGGER,
   schema,
 })

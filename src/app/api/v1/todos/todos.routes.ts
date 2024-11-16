@@ -40,8 +40,8 @@ export const getOne = createRoute({
     params: uuidSchema(),
   },
   responses: {
-    [HttpStatusCodes.NOT_FOUND]: createJsonContent("Todo not found", notFoundSchema()),
     [HttpStatusCodes.OK]: createJsonContent("The requested todo", selectTodosSchema),
+    [HttpStatusCodes.NOT_FOUND]: createJsonContent("Todo not found", notFoundSchema()),
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: createJsonContent(
       "Invalid id error",
       errorSchema(uuidSchema())
@@ -58,8 +58,8 @@ export const patch = createRoute({
     params: uuidSchema(),
   },
   responses: {
-    [HttpStatusCodes.NOT_FOUND]: createJsonContent("Todo not found", notFoundSchema()),
     [HttpStatusCodes.OK]: createJsonContent("The updated todo", selectTodosSchema),
+    [HttpStatusCodes.NOT_FOUND]: createJsonContent("Todo not found", notFoundSchema()),
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: createJsonContent(
       "The validation error(s)",
       errorSchema(uuidSchema()).or(errorSchema(patchTodosSchema))

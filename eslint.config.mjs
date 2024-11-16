@@ -18,7 +18,6 @@ export default tseslint.config(
       "n/no-process-env": "error",
       "no-console": "error",
       "perfectionist/sort-imports": "error",
-      "perfectionist/sort-objects": "error",
       "unicorn/filename-case": [
         "error",
         {

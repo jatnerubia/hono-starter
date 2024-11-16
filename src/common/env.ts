@@ -16,14 +16,14 @@ expand(
 )
 
 export const EnvSchema = z.object({
+  NODE_ENV: z.string().default(Environment.DEVELOPMENT),
+  PORT: z.coerce.number().default(5000),
+  LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"]),
+  DATABASE_URL: z.string().url(),
   DATABASE_LOGGER: z
     .string()
     .transform((value) => value === "true")
     .default("false"),
-  DATABASE_URL: z.string().url(),
-  LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"]),
-  NODE_ENV: z.string().default(Environment.DEVELOPMENT),
-  PORT: z.coerce.number().default(5000),
 })
 
 type env = z.infer<typeof EnvSchema>

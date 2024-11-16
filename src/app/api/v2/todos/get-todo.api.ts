@@ -18,8 +18,8 @@ const route = createRoute({
     params: uuidSchema(),
   },
   responses: {
-    [HttpStatusCodes.NOT_FOUND]: createJsonContent("Todo not found", notFoundSchema()),
     [HttpStatusCodes.OK]: createJsonContent("The requested todo", selectTodosSchema),
+    [HttpStatusCodes.NOT_FOUND]: createJsonContent("Todo not found", notFoundSchema()),
     [HttpStatusCodes.UNPROCESSABLE_ENTITY]: createJsonContent(
       "Invalid id error",
       errorSchema(uuidSchema())
